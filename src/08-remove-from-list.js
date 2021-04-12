@@ -2,7 +2,7 @@
  * Given a singly linked list of integers l and an integer k,
  * remove all elements from list l that have a value equal to k.
  *
- * @param {List} l
+ * @param {List} _l
  * @param {Number} k
  * @return {List}
  *
@@ -17,8 +17,19 @@
  * }
  */
 
-function removeKFromList(/* l, k */) {
-  throw new Error('Not implemented');
+function removeKFromList(l, k) {
+  let currL = l;
+
+  while (currL) {
+    if (currL.value === k) {
+      currL.value = currL.next.value;
+      currL.next = currL.next.next;
+    } else {
+      currL = currL.next;
+    }
+  }
+
+  return l;
 }
 
 module.exports = removeKFromList;
